@@ -57,4 +57,30 @@ class MonsterImg: UIImageView {
         
     }
     
+    func restartIdleAnimation(timer: NSTimer!) {
+        playIdleAnimation()
+    }
+    
+    func returnToLifeAnimation() {
+        
+        self.image = UIImage(named: "dead1.png")
+        
+        self.animationImages = nil
+        
+        var liveArray = [UIImage]()
+        for var x = 5; x >= 1; x-- {
+            let img = UIImage(named: "dead\(x).png")
+            liveArray.append(img!)
+        }
+        
+        self.animationImages = liveArray
+        self.animationDuration = 0.8
+        self.animationRepeatCount = 1
+        self.startAnimating()
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "restartIdleAnimation:", userInfo: nil, repeats: false)
+        
+    }
+    
 }
+

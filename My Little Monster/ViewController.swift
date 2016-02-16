@@ -17,8 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty1Img: UIImageView!
     @IBOutlet weak var penalty2Img: UIImageView!
     @IBOutlet weak var penalty3Img: UIImageView!
-    
-    
+    @IBOutlet weak var restartBtn: UIButton!
+    @IBOutlet weak var whipImg: DragImg!
+
+
+
     
     
     
@@ -43,11 +46,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         foodImg.dropTarget = monsterImg
+        whipImg.dropTarget = monsterImg
         heartImg.dropTarget = monsterImg
         
         penalty1Img.alpha = DIM_ALPHA
         penalty2Img.alpha = DIM_ALPHA
         penalty3Img.alpha = DIM_ALPHA
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
             try sfxSkull = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("skull", ofType: "wav")!))
             
             musicPlayer.prepareToPlay()
-            musicPlayer.play()
+            //musicPlayer.play()
             
             sfxBite.prepareToPlay()
             sfxHeart.prepareToPlay()
@@ -88,11 +93,15 @@ class ViewController: UIViewController {
         foodImg.userInteractionEnabled = false
         heartImg.alpha = DIM_ALPHA
         heartImg.userInteractionEnabled = false
+        whipImg.alpha = DIM_ALPHA
+        whipImg.userInteractionEnabled = false
         
         if currentItem == 0 {
             sfxHeart.play()
-        } else {
+        } else if currentItem == 1 {
             sfxBite.play()
+        } else {
+            sfxSkull.play()
         }
         
     }
@@ -132,19 +141,30 @@ class ViewController: UIViewController {
             }
             
         }
-        
-        let rand = arc4random_uniform(2) // 0 or 1
+
+        let rand = arc4random_uniform(3) // 0 or 1 or 2
         
         if rand == 0 {
             foodImg.alpha = DIM_ALPHA
             foodImg.userInteractionEnabled = false
             heartImg.alpha = OPAQUE
             heartImg.userInteractionEnabled = true
-        } else {
+            whipImg.alpha = DIM_ALPHA
+            whipImg.userInteractionEnabled = false
+        } else if rand == 1 {
             heartImg.alpha = DIM_ALPHA
             heartImg.userInteractionEnabled = false
             foodImg.alpha = OPAQUE
             foodImg.userInteractionEnabled = true
+            whipImg.alpha = DIM_ALPHA
+            whipImg.userInteractionEnabled = false
+        } else if rand == 2 {
+            heartImg.alpha = DIM_ALPHA
+            heartImg.userInteractionEnabled = false
+            foodImg.alpha = DIM_ALPHA
+            foodImg.userInteractionEnabled = false
+            whipImg.alpha = OPAQUE
+            whipImg.userInteractionEnabled = true
         }
         
         currentItem = rand
@@ -157,7 +177,36 @@ class ViewController: UIViewController {
         timer.invalidate()
         monsterImg.playDeathAnimation()
         sfxDeath.play()
+        restartBtn.hidden = false
+        foodImg.userInteractionEnabled = false
+        heartImg.userInteractionEnabled = false
+        whipImg.userInteractionEnabled = false
     }
+    
+    func restartGame() {
+        restartBtn.hidden = true
+        monsterHappy = false
+        penalties = 0
+        penalty1Img.alpha = DIM_ALPHA
+        penalty2Img.alpha = DIM_ALPHA
+        penalty3Img.alpha = DIM_ALPHA
+        
+        //foodImg.userInteractionEnabled = false
+        //heartImg.userInteractionEnabled = false
+        
+        monsterImg.returnToLifeAnimation()
+        
+        //monsterImg.playIdleAnimation()
+        
+        startTimer()
+        
+    }
+    
+    @IBAction func onPressedRestartBtn(sender: AnyObject) {
+        restartGame()
+    }
+    
+    
     
 }
 
