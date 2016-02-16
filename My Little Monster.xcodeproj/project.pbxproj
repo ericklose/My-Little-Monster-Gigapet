@@ -13,6 +13,7 @@
 		A6BE7DB21C722E980076D948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6BE7DB11C722E980076D948 /* Assets.xcassets */; };
 		A6BE7DB51C722E980076D948 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BE7DB31C722E980076D948 /* LaunchScreen.storyboard */; };
 		A6BE7DC01C722E980076D948 /* My_Little_MonsterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BE7DBF1C722E980076D948 /* My_Little_MonsterTests.swift */; };
+		A6CED2061C72B78B0095FB07 /* DragImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CED2051C72B78B0095FB07 /* DragImg.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A6BE7DBB1C722E980076D948 /* My Little MonsterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Little MonsterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BE7DBF1C722E980076D948 /* My_Little_MonsterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_Little_MonsterTests.swift; sourceTree = "<group>"; };
 		A6BE7DC11C722E980076D948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6CED2051C72B78B0095FB07 /* DragImg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragImg.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A6BE7DB11C722E980076D948 /* Assets.xcassets */,
 				A6BE7DB31C722E980076D948 /* LaunchScreen.storyboard */,
 				A6BE7DB61C722E980076D948 /* Info.plist */,
+				A6CED2051C72B78B0095FB07 /* DragImg.swift */,
 			);
 			path = "My Little Monster";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6CED2061C72B78B0095FB07 /* DragImg.swift in Sources */,
 				A6BE7DAD1C722E980076D948 /* ViewController.swift in Sources */,
 				A6BE7DAB1C722E980076D948 /* AppDelegate.swift in Sources */,
 			);
@@ -390,6 +394,7 @@
 				A6BE7DC61C722E980076D948 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6BE7DC71C722E980076D948 /* Build configuration list for PBXNativeTarget "My Little MonsterTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +403,7 @@
 				A6BE7DC91C722E980076D948 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
