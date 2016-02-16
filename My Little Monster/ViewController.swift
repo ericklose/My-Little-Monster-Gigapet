@@ -53,6 +53,12 @@ class ViewController: UIViewController {
         penalty2Img.alpha = DIM_ALPHA
         penalty3Img.alpha = DIM_ALPHA
         
+        foodImg.alpha = DIM_ALPHA
+        foodImg.userInteractionEnabled = false
+        heartImg.alpha = OPAQUE
+        heartImg.userInteractionEnabled = true
+        whipImg.alpha = DIM_ALPHA
+        whipImg.userInteractionEnabled = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
@@ -69,7 +75,7 @@ class ViewController: UIViewController {
             try sfxSkull = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("skull", ofType: "wav")!))
             
             musicPlayer.prepareToPlay()
-            //musicPlayer.play()
+            musicPlayer.play()
             
             sfxBite.prepareToPlay()
             sfxHeart.prepareToPlay()
@@ -191,12 +197,7 @@ class ViewController: UIViewController {
         penalty2Img.alpha = DIM_ALPHA
         penalty3Img.alpha = DIM_ALPHA
         
-        //foodImg.userInteractionEnabled = false
-        //heartImg.userInteractionEnabled = false
-        
         monsterImg.returnToLifeAnimation()
-        
-        //monsterImg.playIdleAnimation()
         
         startTimer()
         
